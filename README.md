@@ -164,7 +164,7 @@
 
     <div class="playzone" id="playzone">
       <button id="yes">掏出「報價單」</button>
-      <button id="no">免費聊天</button>
+      <button id="no">乖寶寶繼續聊</button>
     </div>
 
     <div class="result" id="result">
