@@ -168,16 +168,17 @@
     </div>
 
     <div class="result" id="result">
-      <div><strong>💸已進入付費諮詢流程💸不接受議價唷</strong></div>
+      <div><strong>💸已進入付費諮詢 不接受議價唷💸</strong></div>
 
       <div class="price">
-        <div class="row"><span>感情問題 (結婚/生小孩)</span><span>$5,500 / 題</span></div>
-        <div class="row"><span>工作問題 (薪水/年終)</span><span>$3,500 / 題</span></div>
+        <div class="row"><span>問感情(結婚/生小孩)</span>$5,500/題</span></div>
+        <div class="row"><span>問工作(薪水/年終)</span>$3,500/題</span></div>
         <div class="muted">😍超過三題視為方案，請先匯款再深聊</div>
       </div>
 
       <div class="deal">
-        過年限定 🛀🏼沐光妍選指定商品三件8折🛀🏼 把話題轉去購物最安全.ᐟ.ᐟ
+          🛀🏼沐光妍選指定商品三件8折🛀🏼<br>
+          把話題轉去購物最安全.ᐟ.ᐟ
       </div>
     </div>
   </div>
