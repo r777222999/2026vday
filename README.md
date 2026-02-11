@@ -116,12 +116,10 @@ button:active{transform:scale(.98);}
 「啊你什麼時候結婚？」<br>
 請選擇你的應對方式。
 </p>
-
 <div class="buttons">
   <button id="yes">掏出「報價單」</button>
   <button id="no">免費聊天</button>
 </div>
-
 <div class="result" id="result">
   <strong>✅ 已進入付費諮詢流程（不接受議價）</strong>
 
@@ -133,7 +131,7 @@ button:active{transform:scale(.98);}
 
   <div class="deal">
   過年限定<br>
-  沐光妍選 日本高人氣指定商品 三件 8 折（把話題轉去購物最安全）
+  沐光妍選 日本高人氣指定商品 三件 8 折 🛀🏼把話題轉去購物最安全
   </div>
 </div>
 
