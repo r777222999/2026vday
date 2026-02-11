@@ -7,168 +7,220 @@
 <title>過年親戚問題｜報價單</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;
+    min-height:100svh;
+    background:
+      radial-gradient(circle at 20% 20%, #ffd1dc 0%, transparent 35%),
+      radial-gradient(circle at 80% 30%, #ffe8a3 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, #c7f0ff 0%, transparent 45%),
+      linear-gradient(135deg, #ff6b9e, #7b61ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px 18px 40px;
+    overflow:auto;
+  }
 
-body{
-  font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;
-  min-height:100svh;
-  background:linear-gradient(135deg,#ff6b9e,#7b61ff);
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  overflow:auto;
-  padding:24px 18px 40px;
-}
+  .container{
+    width:min(760px, 96vw);
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(10px);
+    border-radius:24px;
+    padding:28px 22px 30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    text-align:left;
+  }
 
-.container{
-  width:100%;
-  max-width:520px;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:blur(10px);
-  border-radius:20px;
-  padding:26px 20px 30px;
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
-}
+  h1{
+    font-size:24px;
+    margin-bottom:12px;
+  }
+  p{
+    font-size:16px;
+    line-height:1.65;
+    margin-bottom:18px;
+  }
 
-h1{
-  font-size:22px;
-  margin-bottom:14px;
-}
+  /* ✅ 逃跑按鈕活動區域 */
+  .playzone{
+    position:relative;
+    width:100%;
+    height:140px;
+    margin-top:10px;
+  }
 
-p{
-  font-size:16px;
-  line-height:1.6;
-  margin-bottom:24px;
-}
+  button{
+    border:0;
+    padding:14px 18px;
+    border-radius:999px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    user-select:none;
+    white-space:nowrap;
+  }
+  button:active{ transform:scale(.98); }
 
-.buttons{
-  position:relative;
-  height:180px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-}
+  #yes{
+    background:linear-gradient(135deg,#00c853,#00b0ff);
+    color:#fff;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-120%, -50%);
+    min-width:190px;
+    text-align:center;
+  }
 
-button{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:999px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.1s ease;
-}
+  /* ✅ No 一開始放右邊，但它會跑 */
+  #no{
+    background:rgba(255,255,255,.92);
+    color:#222;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(20%, -50%);
+    min-width:190px;
+    text-align:center;
+  }
 
-button:active{transform:scale(.98);}
+  .result{
+    display:none;
+    margin-top:18px;
+    padding:16px;
+    border-radius:16px;
+    background:rgba(255,255,255,.95);
+    line-height:1.7;
+    animation:fade .28s ease;
+  }
+  @keyframes fade{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
-#yes{
-  background:linear-gradient(135deg,#00c853,#00b0ff);
-  color:white;
-}
+  .price{
+    margin-top:12px;
+    border:1px dashed rgba(0,0,0,.18);
+    border-radius:14px;
+    padding:12px;
+    background:rgba(255,255,255,.75);
+    font-weight:650;
+  }
+  .row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:6px 0;
+  }
+  .muted{opacity:.75;font-size:13px;margin-top:6px;}
 
-#no{
-  background:#eee;
-  color:#333;
-  position:absolute;
-}
+  .deal{
+    margin-top:14px;
+    padding:12px;
+    border-radius:14px;
+    background:linear-gradient(135deg, rgba(255,107,158,.18), rgba(123,97,255,.15));
+    font-weight:800;
+  }
 
-.result{
-  display:none;
-  margin-top:24px;
-  padding:18px;
-  border-radius:16px;
-  background:white;
-  animation:fade .3s ease;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-.price{
-  margin-top:12px;
-  font-weight:600;
-  line-height:1.8;
-}
-
-.deal{
-  margin-top:18px;
-  padding:14px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#ffe4ec,#e7e0ff);
-  font-weight:700;
-}
+  /* ✅ 手機：按鈕改上下排列，但 No 仍可在 playzone 內亂跑 */
+  @media (max-width: 600px){
+    .container{
+      width:100%;
+      max-width:520px;
+      border-radius:20px;
+    }
+    .playzone{
+      height:190px;
+    }
+    #yes{
+      left:50%;
+      top:44px;
+      transform:translate(-50%, 0);
+      width:92%;
+      min-width:0;
+    }
+    #no{
+      left:50%;
+      top:112px;
+      transform:translate(-50%, 0);
+      width:92%;
+      min-width:0;
+    }
+  }
 </style>
 </head>
 
 <body>
+  <div class="container">
+    <h1>過年親戚問題｜應對模式</h1>
+    <p>
+      過年回家，總有幾位很關心人生進度的長輩。<br>
+      「啊你什麼時候結婚？」<br>
+      請選擇你的應對方式。
+    </p>
 
-<div class="container">
+    <div class="playzone" id="playzone">
+      <button id="yes">掏出「報價單」</button>
+      <button id="no">免費聊天</button>
+    </div>
 
-<h1>過年親戚問題｜應對模式</h1>
+    <div class="result" id="result">
+      <div><strong>✅ 已進入付費諮詢流程（不接受議價）</strong></div>
 
-<p>
-過年回家，總有幾位很關心人生進度的長輩。<br>
-「啊你什麼時候結婚？」<br>
-請選擇你的應對方式。
-</p>
+      <div class="price">
+        <div class="row"><span>感情問題（結婚/生小孩）</span><span>$5,500 / 題</span></div>
+        <div class="row"><span>工作問題（薪水/升遷）</span><span>$3,500 / 題</span></div>
+        <div class="muted">* 超過三題視為方案，請先匯款再開口。</div>
+      </div>
 
-<div class="buttons">
-  <button id="yes">掏出「報價單」</button>
-  <button id="no">免費聊天</button>
-</div>
-
-<div class="result" id="result">
-  <strong>✅ 已進入付費諮詢流程（不接受議價）</strong>
-
-  <div class="price">
-  感情問題（結婚/生小孩） $5,500 / 題<br>
-  工作問題（薪水/升遷） $3,500 / 題<br>
-  * 超過三題視為方案，請先匯款再開口。
+      <div class="deal">
+        過年限定：沐光妍選日本高人氣指定商品 三件8折 🛀🏼把話題轉去購物最安全
+      </div>
+    </div>
   </div>
-
-  <div class="deal">
-  過年限定<br>
-  沐光妍選 日本高人氣指定商品 三件 8 折 🛀🏼把話題轉去購物最安全
-  </div>
-</div>
-
-</div>
 
 <script>
-const noBtn=document.getElementById('no');
-const yesBtn=document.getElementById('yes');
-const result=document.getElementById('result');
-const buttons=document.querySelector('.buttons');
+  const noBtn = document.getElementById('no');
+  const yesBtn = document.getElementById('yes');
+  const result = document.getElementById('result');
+  const zone = document.getElementById('playzone');
 
-function moveNo(){
-  const area=buttons.getBoundingClientRect();
-  const btn=noBtn.getBoundingClientRect();
+  function moveNo(){
+    const area = zone.getBoundingClientRect();
+    const btn = noBtn.getBoundingClientRect();
 
-  const maxX=area.width-btn.width;
-  const maxY=area.height-btn.height;
+    const padding = 6; // 不要貼邊
+    const maxX = Math.max(0, area.width - btn.width - padding*2);
+    const maxY = Math.max(0, area.height - btn.height - padding*2);
 
-  const x=Math.random()*maxX;
-  const y=Math.random()*maxY;
+    const x = padding + Math.random() * maxX;
+    const y = padding + Math.random() * maxY;
 
-  noBtn.style.left=x+"px";
-  noBtn.style.top=y+"px";
-}
+    // 直接用 left/top 控制位置（保持 absolute）
+    noBtn.style.left = x + 'px';
+    noBtn.style.top  = y + 'px';
+    noBtn.style.transform = 'translate(0,0)';
+  }
 
-noBtn.addEventListener('mouseenter',moveNo);
-noBtn.addEventListener('touchstart',moveNo);
-noBtn.addEventListener('click',moveNo);
+  // 桌機：靠近就跑
+  noBtn.addEventListener('mouseenter', moveNo);
 
-yesBtn.addEventListener('click',()=>{
-  result.style.display="block";
-  yesBtn.style.display="none";
-  noBtn.style.display="none";
-});
+  // 手機：碰到就跑（避免真的按到）
+  noBtn.addEventListener('touchstart', (e)=>{ e.preventDefault(); moveNo(); }, {passive:false});
+
+  // 真的點到也跑
+  noBtn.addEventListener('click', (e)=>{ e.preventDefault(); moveNo(); });
+
+  yesBtn.addEventListener('click', ()=>{
+    result.style.display = 'block';
+    yesBtn.style.display = 'none';
+    noBtn.style.display  = 'none';
+    // 捲到結果（手機比較舒服）
+    result.scrollIntoView({behavior:'smooth', block:'start'});
+  });
 </script>
-
 </body>
 </html>
