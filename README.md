@@ -30,7 +30,7 @@
     border-radius:24px;
     padding:28px 22px 30px;
     box-shadow:0 20px 60px rgba(0,0,0,.25);
-    text-align:left;
+    text-align:center;
   }
 
   h1{
@@ -157,9 +157,9 @@
   <div class="container">
     <h1>過年親戚問題｜應對模式</h1>
     <p>
-      過年回家，總有幾位很關心人生進度的長輩。<br>
+      過年回家，總是有幾位非常關心人生進度的長輩<br>
       「啊你什麼時候結婚？」<br>
-      請選擇你的應對方式。
+      請選擇你的回覆方式
     </p>
 
     <div class="playzone" id="playzone">
@@ -168,16 +168,16 @@
     </div>
 
     <div class="result" id="result">
-      <div><strong>✅ 已進入付費諮詢流程（不接受議價）</strong></div>
+      <div><strong>💸已進入付費諮詢流程💸不接受議價唷</strong></div>
 
       <div class="price">
-        <div class="row"><span>感情問題（結婚/生小孩）</span><span>$5,500 / 題</span></div>
-        <div class="row"><span>工作問題（薪水/升遷）</span><span>$3,500 / 題</span></div>
-        <div class="muted">* 超過三題視為方案，請先匯款再開口。</div>
+        <div class="row"><span>感情問題 (結婚/生小孩)</span><span>$5,500 / 題</span></div>
+        <div class="row"><span>工作問題 (薪水/年終)</span><span>$3,500 / 題</span></div>
+        <div class="muted">😍超過三題視為方案，請先匯款再深聊</div>
       </div>
 
       <div class="deal">
-        過年限定 🛀🏼沐光妍選 日本高人氣指定商品 三件8折🛀🏼 把話題轉去購物最安全
+        過年限定 🛀🏼沐光妍選指定商品三件8折🛀🏼 把話題轉去購物最安全.ᐟ.ᐟ
       </div>
     </div>
   </div>
