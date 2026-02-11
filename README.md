@@ -2,14 +2,20 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#ff6b9e" />
   <title>過年親戚問題｜報價單</title>
+
   <style>
     :root { --card: rgba(255,255,255,.78); }
     * { box-sizing: border-box; }
+
     body{
-      margin:0; min-height:100vh;
-      display:flex; align-items:center; justify-content:center;
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans TC", sans-serif;
       background:
         radial-gradient(circle at 20% 20%, #ffd1dc 0%, transparent 35%),
@@ -64,8 +70,8 @@
       box-shadow: 0 10px 25px rgba(0,0,0,.15);
       transition: transform .08s ease;
       user-select:none;
-      min-width:160px;
-      font-weight:700;
+      min-width:170px;
+      font-weight:800;
       white-space:nowrap;
     }
     button:active{ transform: scale(.98); }
@@ -81,7 +87,7 @@
       left:50%;
       top:50%;
       transform: translate(120px, -50%);
-      font-weight:700;
+      font-weight:800;
     }
 
     .result{
@@ -115,11 +121,11 @@
       justify-content:space-between;
       gap:10px;
       padding:6px 2px;
-      font-weight:650;
+      font-weight:700;
     }
     .price .muted{
       opacity:.75;
-      font-weight:600;
+      font-weight:650;
       font-size:14px;
       margin-top:6px;
     }
@@ -130,7 +136,7 @@
       background: linear-gradient(135deg, rgba(255,107,158,.18), rgba(123,97,255,.15));
       border:1px solid rgba(0,0,0,.08);
     }
-    .deal strong{ font-weight:800; }
+    .deal strong{ font-weight:900; }
 
     @keyframes pop{
       from{ transform:scale(.98); opacity:0 }
@@ -141,6 +147,36 @@
       margin-top:10px;
       opacity:.68;
       font-size:13px;
+    }
+
+    /* ✅ 手機全屏顯示：消掉「中間卡片感」 */
+    @media (max-width: 768px){
+      body{
+        align-items:flex-start;
+        justify-content:flex-start;
+        overflow:auto;
+      }
+      .hearts{
+        position:fixed;
+      }
+      .card{
+        width:100vw;
+        min-height:100svh; /* iOS 新單位，比 100vh 更準 */
+        border-radius:0;
+        padding:22px 18px 40px;
+        box-shadow:none;
+        border-left:0;
+        border-right:0;
+      }
+      .result{
+        max-width:100%;
+      }
+      .buttons{
+        height:130px;
+      }
+      button{
+        min-width:160px;
+      }
     }
   </style>
 </head>
@@ -171,8 +207,8 @@
       </div>
 
       <div class="deal">
-        <div>順便提醒：情人節 × 過年限定</div>
-        <div><strong>指定組合三件 8 折</strong>（把話題轉去購物最安全）</div>
+        <div>順便提醒：過年限定</div>
+        <div><strong>沐光妍選 日本高人氣指定商品 三件 8 折</strong>（把話題轉去購物最安全）</div>
       </div>
 
       <div class="tiny">（放心，「免費聊天」那個按鈕本來就很難按到。）</div>
@@ -200,7 +236,7 @@
       noBtn.style.transform = 'translate(0, 0)';
     }
 
-    // 讓「免費聊天」更難按到：靠近就跑 + 點到也跑
+    // 讓「免費聊天」更難按到：靠近就跑 + 點到也跑（含手機）
     noBtn.addEventListener('mouseenter', moveNo);
     noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); }, {passive:false});
     noBtn.addEventListener('click', (e) => { e.preventDefault(); moveNo(); });
